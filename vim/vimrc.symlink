@@ -44,7 +44,7 @@ set backupdir=$HOME/vim_backup/
 set directory=$HOME/vim_swap/
 
 """" Settings
-set spell                               " Dynamic Spell Checking
+"set spell                               " Dynamic Spell Checking
 set nohlsearch
 set nocul
 set ww=b,<,>,[,]

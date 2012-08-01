@@ -1,10 +1,4 @@
 # .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
 # Source local for stuff that you don't want in the public repo.
 if [[ -a ~/.localrc ]]
 then
