@@ -14,8 +14,8 @@ fi
 # shortcut to this dotfiles path is $BASH
 export BASH=$HOME/.dotfiles
 
-for config_file ($BASH/**/*.bash) source $config_file
+for config_file in $BASH/**/*.bash;do source $config_file;done
 
-for config_file ($BASH/**/completion.sh) source $config_file
+for config_file in $BASH/**/completion.sh;do source $config_file;done
 # User specific aliases and functions
 set -o vi
