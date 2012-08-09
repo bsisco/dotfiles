@@ -1,3 +1,4 @@
+source-file ~/.tmux-colors-solarized/tmuxcolors.conf
 set -g prefix C-a
 
 bind C-a send-prefix
