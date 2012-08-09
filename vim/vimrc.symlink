@@ -36,7 +36,6 @@ set ttyfast
 set cmdheight=2
 set sidescrolloff=3
 set colorcolumn=-1
-set guifont=Monaco
 
 ""Set backup to a location
 set backup
@@ -129,6 +128,9 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
 let g:commandTMaxHeight=50
 let g:CommandTMatchWindowAtTop=1
 
+"""""" Completion stuff
+let g:SuperTabDefaultCompletionType = "context"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE (thanks Gary Bernhardt)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,9 +174,15 @@ set iskeyword+=.
 noremap j gj
 noremap k gk
 
-colorscheme xoria256
 "" tab labels show the filename without path(tail)
-set guitablabel=%N/\ %t\ %M
+if has("gui_running")
+    colorscheme xoria256
+    set guitablabel=%N/\ %t\ %M
+    set guifont=DejaVu\ Sans\ Mono
+    set guioptions=
+else
+    colorscheme xoria256
+endif
 
 """" Windows
 if exists(":tab")						" Try to move to other windows if changing buf
@@ -202,6 +210,12 @@ if has("autocmd")
         au FileType tex set textwidth=80
         au FileType py inoremap # X#
         au FileType py set expandtab
+        au Filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+        au Filetype html set omnifunc=htmlcomplete#CompleteTags
+        au Filetype css set omnifunc=csscomplete#CompleteCSS
+        au Filetype xml set omnifunc=xmlcomplete#CompleteTags
+        au Filetype php set omnifunc=phpcomplete#CompletePHP
+        au Filetype c set omnifunc=ccomplete#Complete
         au FileType py set omnifunc=pythoncomplete#Complete
         autocmd BufRead,BufNewFile,FileReadPost *.py source ~/.vim/ftplugin/python.vim
         autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
@@ -292,6 +306,10 @@ function! s:align()
   endif
 endfunction
 
+"""" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets'
+
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-s> <esc>:w<cr>a
 nnoremap <C-s> :w<cr>
@@ -303,25 +321,11 @@ map <Leader>v :vsp ~/.vimrc<cr>
 map <Leader>e :e ~/.vimrc<cr>
 map <Leader>u :source ~/.vimrc<cr>
 map <Leader>ft :%s/	/    /g<cr>
-"map  :Lodgeit<cr>
 map <Leader>cp :botright cope<cr>
 map <Leader>n :cn<cr>
 map <Leader>p :cp<cr>
 nmap . .`[
-"map <Leader>cu :Tabularize /\|<cr>
 map <Leader>co ggVG"*y
-map <Leader>cc <plug>NERDCommenterComment<cr>
-map <Leader>c<space> <plug>NERDCommenterToggle<cr>
-map <Leader>cm <plug>NERDCommenterMinimal<cr>
-map <Leader>cs <plug>NERDCommenterSexy<cr>
-map <Leader>ci <plug>NERDCommenterInvert<cr>
-map <Leader>cy <plug>NERDCommenterYank<cr>
-map <Leader>cl <plug>NERDCommenterAlignLeft<cr>
-map <Leader>cb <plug>NERDCommenterAlignBoth<cr>
-map <Leader>cn <plug>NERDCommenterNest<cr>
-map <Leader>cu <plug>NERDCommenterUncomment<cr>
-map <Leader>c$ <plug>NERDCommenterToEOL<cr>
-map <Leader>cA <plug>NERDCommenterAppend<cr>
 nmap <Leader>tl :set list!<cr>
 nmap <Leader>cd :cd%:p:h<cr>
 nmap <Leader>lcd :lcd%:p:h<cr>
