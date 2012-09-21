@@ -7,3 +7,4 @@ fi
 # User specific environment and startup programs
 
 export PATH
+export GREP_OPTIONS='--color=auto --exclude=*,pyc --exclude-dir=.git'
