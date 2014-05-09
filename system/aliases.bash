@@ -80,4 +80,3 @@ alias pacinsd='sudo pacman-color -S --asdeps'        # Install given package(s) 
 alias pacmir='sudo pacman-color -Syy'                # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
 alias pacudb='sudo pacman-color -Sy'                 # Update the package repos and sync the db
 alias paccupd='sudo pacman-color -Qu'                # Check system for any pacman updates
-source /usr/share/git/completion/git-completion.bash
